@@ -88,3 +88,68 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// GET YEAR FUNCTION I CREATED for get the year
+// return year 1972
+int
+sys_getyear(void)
+{
+  return 1975;
+}
+
+// GET YEAR FUNCTION I CREATED for get size
+// return year 1972
+int
+sys_getmysize(void)
+{
+  return proc->sz;
+}
+
+
+// ----------------------------------------
+// GET YEAR FUNCTION I CREATED for get size
+// return year 1972
+int
+sys_getkernalstartaddr(void)
+{
+  return KERNBASE;
+}
+
+// GET YEAR FUNCTION I CREATED for get size
+// return year 1972
+int
+sys_getkernalendaddr(void)
+{
+  return KERNBASE+PHYSTOP;
+}
+
+// GET YEAR FUNCTION I CREATED for get size
+// return year 1972
+int
+sys_getkernalvariaddr(void)
+{
+  int a;
+  int b = (int) &a;
+  return b;
+}
+
+// GET YEAR FUNCTION I CREATED for get size
+// return year 1972
+int
+sys_getsystemcalladdr(void)
+{
+  return (int) &sys_fork;
+}
+
+// set priority
+int
+sys_setpriority(void)
+{
+  int priority;
+  if(argint(0, &priority) < 0)
+    return -1;
+  proc->priority = priority;
+  return (int) proc->priority;
+}
+
+

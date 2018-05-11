@@ -98,6 +98,15 @@ extern int sys_unlink(void);
 extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
+extern int sys_getyear(void); // GET YEAR FUNCTION I CREATED in sysproc.c
+extern int sys_getkernalstartaddr(void);
+extern int sys_getkernalendaddr(void);
+extern int sys_getkernalvariaddr(void);
+extern int sys_getsystemcalladdr(void);
+extern int sys_setpriority(void);
+extern int sys_getinodesize(void);
+
+extern int sys_getmysize(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -121,6 +130,15 @@ static int (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+[SYS_getyear] sys_getyear,
+[SYS_getmysize] sys_getmysize,
+[SYS_getkernalstartaddr] sys_getkernalstartaddr,
+[SYS_getkernalendaddr] sys_getkernalendaddr,
+[SYS_getkernalvariaddr] sys_getkernalvariaddr,
+[SYS_getsystemcalladdr] sys_getsystemcalladdr,
+[SYS_setpriority] sys_setpriority,
+[SYS_setpriority] sys_setpriority,
+[SYS_getinodesize] sys_getinodesize
 };
 
 void

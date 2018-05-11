@@ -22,6 +22,15 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int getyear(void);
+int getmysize(void);
+
+int getkernalstartaddr(void);
+int getkernalendaddr(void);
+int getkernalvariaddr(void);
+int getsystemcalladdr(void);
+int setpriority(int);
+int getinodesize(char*);
 
 // ulib.c
 int stat(char*, struct stat*);
