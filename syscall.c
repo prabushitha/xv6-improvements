@@ -107,6 +107,8 @@ extern int sys_setpriority(void);
 extern int sys_getinodesize(void);
 
 extern int sys_getmysize(void);
+extern int sys_mycall(void);
+extern int sys_getptable(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -138,7 +140,9 @@ static int (*syscalls[])(void) = {
 [SYS_getsystemcalladdr] sys_getsystemcalladdr,
 [SYS_setpriority] sys_setpriority,
 [SYS_setpriority] sys_setpriority,
-[SYS_getinodesize] sys_getinodesize
+[SYS_getinodesize] sys_getinodesize,
+[SYS_mycall] sys_mycall,
+[SYS_getptable] sys_getptable
 };
 
 void

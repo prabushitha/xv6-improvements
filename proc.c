@@ -460,4 +460,7 @@ procdump(void)
   }
 }
 
-
+// For PS Command, we need to get the proccess table
+struct proc * proc_table_start(void){
+  return ptable.proc;
+}

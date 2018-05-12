@@ -26,15 +26,16 @@ main(void)
       printf(1, "init: fork failed\n");
       exit();
     }
-
+    /*
     if (pid > 0){
 	// sleep(50);
     }else{
  	exec("myprog", argv);
 	exit();
     }
-    int new_pid = fork();
-    if(new_pid == 0){
+    */
+    // int new_pid = fork();
+    if(pid == 0){
       printf(1, "init: starting sh\n");
       exec("sh", argv);
       printf(1, "init: exec sh failed\n");printf(1, "init: exec sh failed\n");

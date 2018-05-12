@@ -28,3 +28,5 @@
 #define SYS_getsystemcalladdr 27
 #define SYS_setpriority 28
 #define SYS_getinodesize 29
+#define SYS_mycall 30
+#define SYS_getptable 31

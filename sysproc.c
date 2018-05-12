@@ -152,4 +152,77 @@ sys_setpriority(void)
   return (int) proc->priority;
 }
 
+//sample
+int
+sys_mycall(void)
+{
+    int size;
+    char *buf;
+    char *s;
+
+    if (argint(0, &size) <0){
+        return -1;
+    }
+
+    if (argptr(1, &buf,size) <0){
+        return -1;
+    }
+
+    s = buf;
+
+    while(buf + size > s){
+        *(int *)s = 1;
+        s+=4;
+        *(int *)s = 2;
+        s+=4;
+    }
+
+    return 3;
+}
+
+//get p table function to this scope
+extern struct proc * proc_table_start(void);
+int
+sys_getptable(void)
+{
+    int size;
+    char *buf;
+    char *s;
+   
+    if (argint(0, &size) <0){
+        return -1;
+    }
+
+    if (argptr(1, &buf,size) <0){
+        return -1;
+    }
+
+    s = buf;
+    
+    struct proc *p = '\0';
+    p = proc_table_start();
+
+    int process_count = 0;
+    while(buf + size > s && p->state != UNUSED){
+	*(int *)s = p->pid;
+  	s += 4;
+	*(int *)s = p->state;
+  	s += 4;
+	memmove(s,p->name,16);
+	s += 16;
+  	*(int *)s = p->parent->pid;
+  	s += 4;
+	*(int *)s = p->priority;
+  	s += 4;
+	*(int *)s = p->sz;
+  	s += 4;
+	*(int *)s = p->killed;
+  	s += 4;
+	// increment to the next address
+	p++;
+	process_count++;
+    }
+
+    return process_count;
+}
 
