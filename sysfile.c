@@ -423,3 +423,19 @@ sys_pipe(void)
   fd[1] = fd1;
   return 0;
 }
+
+
+// inode size
+int 
+sys_getinodesize(void){
+  
+  struct inode* ip; 
+  char* path; // variable to store the path
+
+  if (argstr(0, &path) >= 0 && (ip = namei(path))!=0){
+    return ip->size;
+  }
+
+  return -1;
+   
+}
